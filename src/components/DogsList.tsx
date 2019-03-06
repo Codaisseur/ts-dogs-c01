@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import request from 'superagent';
+import { Link } from 'react-router-dom';
 
 export interface IDogsListProps {
   dogBreeds: null | any[];
@@ -11,7 +11,11 @@ const DogsList = ({ dogBreeds }: IDogsListProps) => {
       <h1>Dogs List</h1>
 
       {dogBreeds
-        ? <ul>{dogBreeds.map(breed => <li key={breed}>{breed}</li>)}</ul>
+        ? <ul>{dogBreeds.map(breed => (
+          <li key={breed}>
+            <Link to={`/dog-breeds/${breed}`}>{breed}</Link>
+          </li>
+        ))}</ul>
         : <p>Loading...</p>}
     </div>
   );
